@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guardians of the Pacific | Change Lives</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        input[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        
+        .pulse-border {
+            animation: pulse-animation 2s infinite;
+        }
+        
+        @keyframes pulse-animation {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(102, 126, 234, 0.7); }
+            50% { box-shadow: 0 0 0 10px rgba(102, 126, 234, 0); }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    
+    <!-- Hero Section -->
+    <div class="hero-gradient text-white py-16 px-4">
+        <div class="max-w-4xl mx-auto text-center">
+            <h1 class="text-5xl md:text-6xl font-bold mb-4">Guardians of the Pacific</h1>
+            <p class="text-2xl md:text-3xl font-light mb-6">Every meal tells a story. Every donation writes a future.</p>
+            <p class="text-lg opacity-90 max-w-2xl mx-auto">
+                We're not just feeding families—we're breaking cycles of poverty, lighting paths to education, and healing communities across Fiji and the Pacific.
+            </p>
+        </div>
+    </div>
+
+    <!-- Main Form Container -->
+    <div class="max-w-4xl mx-auto px-4 -mt-8 pb-16">
+        <div class="bg-white rounded-2xl shadow-2xl overflow-hidden">
+            
+            <form id="fundraiser-form" class="p-8 md:p-12">
+                
+                <!-- Personal Details -->
+                <section class="mb-12">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-2">Start Your Impact</h2>
+                    <p class="text-gray-600 mb-6">Every journey begins with connection.</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">First Name</label>
+                            <input type="text" id="firstName" required 
+                                class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-purple-500 focus:outline-none transition">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">Surname</label>
+                            <input type="text" id="surname" required 
+                                class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-purple-500 focus:outline-none transition">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">Phone</label>
+                            <input type="tel" id="phone" required 
+                                class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-purple-500 focus:outline-none transition">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">Email</label>
+                            <input type="email" id="email" required 
+                                class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-purple-500 focus:outline-none transition">
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Donate Only Toggle -->
+                <section class="mb-12 p-6 bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl">
+                    <label class="flex items-center cursor-pointer">
+                        <input type="checkbox" id="donateOnly" onchange="toggleDonationMode()" 
+                            class="w-6 h-6 text-purple-600 border-gray-300 rounded focus:ring-purple-500">
+                        <span class="ml-4 text-lg font-semibold text-gray-800">
+                            I want to donate only (pure impact, direct support)
+                        </span>
+                    </label>
+                </section>
+
+                <!-- Meal Selection -->
+                <section id="mealSection" class="mb-12">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-2">Choose Your Impact</h2>
+                    <p class="text-gray-600 mb-8">Each meal is a moment of hope, a step towards change.</p>
+                    
+                    <div class="space-y-6">
+                        <!-- Palau Meal -->
+                        <div class="card-hover p-6 border-2 border-purple-100 rounded-xl bg-white">
+                            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                                <div class="flex-1">
+                                    <h3 class="text-2xl font-bold text-gray-800 mb-2">
+                                        🍚 Palau Meal Pack
+                                        <span class="text-lg font-normal text-purple-600">$15.00</span>
+                                    </h3>
+                                    <p class="text-gray-600 mb-4">Traditional Fijian comfort, served with love.</p>
+                                    
+                                    <div class="flex gap-4">
+                                        <label class="flex items-center cursor-pointer px-4 py-2 border-2 border-gray-200 rounded-lg hover:border-green-500 transition">
+                                            <input type="radio" name="palauType" value="Veg" checked 
+                                                class="w-4 h-4 text-green-600">
+                                            <span class="ml-2 font-medium">Vegetable</span>
+                                        </label>
+                                        <label class="flex items-center cursor-pointer px-4 py-2 border-2 border-gray-200 rounded-lg hover:border-red-500 transition">
+                                            <input type="radio" name="palauType" value="Chicken" 
+                                                class="w-4 h-4 text-red-600">
+                                            <span class="ml-2 font-medium">Chicken</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                <div class="md:text-right">
+                                    <label class="block text-sm font-semibold text-gray-700 mb-2">Quantity</label>
+                                    <input type="number" id="palauQty" min="0" value="0" 
+                                        oninput="calculateTotal()"
+                                        class="w-24 px-4 py-3 text-center text-xl font-bold border-2 border-gray-200 rounded-lg focus:border-purple-500 focus:outline-none">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- BBQ Pack -->
+                        <div class="card-hover p-6 border-2 border-purple-100 rounded-xl bg-white">
+                            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                                <div class="flex-1">
+                                    <h3 class="text-2xl font-bold text-gray-800 mb-2">
+                                        🍖 Fiji BBQ Pack
+                                        <span class="text-lg font-normal text-purple-600">$20.00</span>
+                                    </h3>
+                                    <p class="text-gray-600">Island tradition meets community celebration.</p>
+                                </div>
+                                
+                                <div class="md:text-right">
+                                    <label class="block text-sm font-semibold text-gray-700 mb-2">Quantity</label>
+                                    <input type="number" id="bbqQty" min="0" value="0" 
+                                        oninput="calculateTotal()"
+                                        class="w-24 px-4 py-3 text-center text-xl font-bold border-2 border-gray-200 rounded-lg focus:border-purple-500 focus:outline-none">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Logistics -->
+                <section class="mb-12">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-2">Connection Details</h2>
+                    <p class="text-gray-600 mb-6">Help us coordinate your contribution perfectly.</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">Your Charity Contact</label>
+                            <select id="charityContact" required 
+                                class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-purple-500 focus:outline-none appearance-none bg-white">
+                                <option value="">Select your contact</option>
+                                <option value="Ashleigh Anthony">Ashleigh Anthony</option>
+                                <option value="Shane Chanel">Shane Chanel</option>
+                                <option value="Zaron Chanel">Zaron Chanel</option>
+                                <option value="Dom Chand">Dom Chand</option>
+                                <option value="Yash Chand">Yash Chand</option>
+                                <option value="Ryan Chand">Ryan Chand</option>
+                                <option value="Anushka Phal">Anushka Phal</option>
+                                <option value="Sanchi Sharma">Sanchi Sharma</option>
+                                <option value="Audrey Thoman">Audrey Thoman</option>
+                                <option value="Shaniya Vilash">Shaniya Vilash</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">Pick-up Location</label>
+                            <select id="pickupLocation" required 
+                                class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-purple-500 focus:outline-none appearance-none bg-white">
+                                <option value="">Select location</option>
+                                <option value="Gowanbrae">Gowanbrae</option>
+                                <option value="Oakleigh">Oakleigh</option>
+                                <option value="Dandenong (2pm)">Dandenong (2pm)</option>
+                                <option value="Bundoora">Bundoora</option>
+                                <option value="Keilor Park">Keilor Park</option>
+                                <option value="Hampton">Hampton</option>
+                            </select>
+                            <p class="text-xs text-gray-500 mt-2">Standard pick-up: 4:00pm - 5:30pm (unless noted)</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Payment Summary -->
+                <section class="mb-12 p-8 bg-gradient-to-br from-purple-50 to-indigo-50 rounded-xl">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-6">Your Impact Summary</h2>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">Additional Donation ($)</label>
+                            <input type="number" id="donationAmount" min="0" value="0" step="0.01"
+                                oninput="calculateTotal()"
+                                class="w-full px-4 py-3 text-2xl font-bold border-2 border-purple-200 rounded-lg focus:border-purple-500 focus:outline-none text-right">
+                            <p class="text-xs text-gray-500 mt-1">Every dollar amplifies hope.</p>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">Total Payment</label>
+                            <div id="totalDisplay" class="w-full px-4 py-3 text-3xl font-black border-2 border-purple-400 rounded-lg bg-white text-purple-600 text-right pulse-border">
+                                $0.00
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">Your Message (Optional)</label>
+                        <textarea id="noteMessage" rows="3" 
+                            placeholder="Share your heart, inspire others, or send a message to recipients..."
+                            class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-purple-500 focus:outline-none resize-none"></textarea>
+                    </div>
+                </section>
+
+                <!-- Submit Button -->
+                <div class="text-center">
+                    <button type="submit" 
+                        class="inline-block px-12 py-5 bg-gradient-to-r from-purple-600 to-indigo-600 text-white text-xl font-bold rounded-full shadow-lg hover:shadow-2xl transform hover:scale-105 transition duration-300">
+                        Complete Your Impact →
+                    </button>
+                    <p class="text-sm text-gray-500 mt-4">Secure payment via Stripe • <span id="stripeAmount">$0.00</span></p>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+        <div class="bg-white rounded-2xl p-8 max-w-md w-full text-center shadow-2xl">
+            <div class="text-6xl mb-4">🌟</div>
+            <h3 class="text-2xl font-bold text-gray-800 mb-4">Thank You, Guardian!</h3>
+            <p class="text-gray-600 mb-6">Your order has been recorded. Redirecting you to secure payment...</p>
+            <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600 mx-auto"></div>
+        </div>
+    </div>
+
+    <script>
+        // Configuration
+        const PALAU_PRICE = 15.00;
+        const BBQ_PRICE = 20.00;
+        const STRIPE_URL = 'https://buy.stripe.com/aEU28S5MPc199PO7ss';
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzmAJOKXEwTH61fdaCJEA2HTWt956tpsMutqb5XQ9YfQqqH5eJwS-XLjlt-W32Q60HC/exec';
+
+        function toggleDonationMode() {
+            const isDonateOnly = document.getElementById('donateOnly').checked;
+            const mealSection = document.getElementById('mealSection');
+            
+            if (isDonateOnly) {
+                mealSection.style.display = 'none';
+                document.getElementById('palauQty').value = 0;
+                document.getElementById('bbqQty').value = 0;
+            } else {
+                mealSection.style.display = 'block';
+            }
+            calculateTotal();
+        }
+
+        function calculateTotal() {
+            const palauQty = parseInt(document.getElementById('palauQty').value) || 0;
+            const bbqQty = parseInt(document.getElementById('bbqQty').value) || 0;
+            const donation = parseFloat(document.getElementById('donationAmount').value) || 0;
+            
+            const mealTotal = (palauQty * PALAU_PRICE) + (bbqQty * BBQ_PRICE);
+            const grandTotal = mealTotal + donation;
+            
+            document.getElementById('totalDisplay').textContent = `$${grandTotal.toFixed(2)}`;
+            document.getElementById('stripeAmount').textContent = `$${grandTotal.toFixed(2)}`;
+        }
+
+        document.getElementById('fundraiser-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                timestamp: new Date().toISOString(),
+                firstName: document.getElementById('firstName').value,
+                surname: document.getElementById('surname').value,
+                phone: document.getElementById('phone').value,
+                email: document.getElementById('email').value,
+                donateOnly: document.getElementById('donateOnly').checked,
+                palauType: document.querySelector('input[name="palauType"]:checked').value,
+                palauQty: document.getElementById('palauQty').value,
+                bbqQty: document.getElementById('bbqQty').value,
+                charityContact: document.getElementById('charityContact').value,
+                pickupLocation: document.getElementById('pickupLocation').value,
+                donationAmount: document.getElementById('donationAmount').value,
+                totalAmount: document.getElementById('totalDisplay').textContent.replace('$', ''),
+                message: document.getElementById('noteMessage').value
+            };
+
+            // Show success modal
+            document.getElementById('successModal').classList.remove('hidden');
+
+            try {
+                // Send to Google Sheets
+                await fetch(GOOGLE_SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                // Redirect to Stripe after 2 seconds
+                setTimeout(() => {
+                    window.location.href = STRIPE_URL;
+                }, 2000);
+
+            } catch (error) {
+                console.error('Error:', error);
+                // Still redirect to payment even if sheet submission fails
+                setTimeout(() => {
+                    window.location.href = STRIPE_URL;
+                }, 2000);
+            }
+        });
+
+        // Initialize
+        calculateTotal();
+    </script>
+</body>
+</html>
